@@ -17,17 +17,25 @@ namespace MRModdingUtility
         /// <returns></returns>
         public async Task ReplaceTags(string docName, params ReplaceTag[] replaceTags)
         {
+            string choise = Console.ReadLine();
             string map = File.ReadAllText(docName);
-            foreach (var tag in replaceTags)
+            try
             {
-                if (map.Contains(tag.V2))
+                foreach (var tag in replaceTags)
                 {
-                    map = map.Replace(tag.V2, tag.V1);
+                    if (choise.Contains("editor"))
+                    {
+                        map = map.Replace(tag.V2, tag.V1);
+                    }
+                    else if (choise.Contains("game"))
+                    {
+                        map = map.Replace(tag.V1, tag.V2);
+                    }
                 }
-                else if (map.Contains(tag.V1))
-                {
-                    map = map.Replace(tag.V1, tag.V2);
-                }
+            }
+            catch
+            {
+                Console.WriteLine("Error");
             }
             await File.WriteAllTextAsync(docName, map);
         }

@@ -23,8 +23,10 @@ namespace MRModdingUtility
 
             // Program info
             Console.WriteLine("Motor Rock Modding Utility v0.1\n");
-            await _xmlTools.ReplaceTags(docName: xmlFile, _tagService["tomapeditor"], _tagService["tomapeditor2"]);
-            Console.WriteLine("Enter X value: ");
+            Console.WriteLine("Enter 'game' or 'editor' to convert map");
+            Console.WriteLine("for playing in the game or editing in map editor");
+            await _xmlTools.ReplaceTags(docName: xmlFile, _tagService["value1"], _tagService["value2"]);
+            Console.WriteLine("\nEnter X value: ");
             var x = float.Parse(Console.ReadLine());
             Console.WriteLine("Enter Y value: ");
             var y = float.Parse(Console.ReadLine());
